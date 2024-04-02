@@ -12,13 +12,13 @@ import {
 const Item = ({product}) => {
   return (
     <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" p={5} m="auto" mt={10}>
-      <Image src={product.imageUrl} alt={`Image of ${product.name}`} />
+      <Image src={product.thumbnail} alt={`Image of ${product.title}`} />
 
       <Box p="6">
         <Box d="flex" alignItems="baseline">
           <HStack spacing={2}>
             <Heading size="md" fontWeight="semibold" lineHeight="tight" isTruncated>
-              {product.name}
+              {product.title}
             </Heading>
             <Text color="green.500">${product.price}</Text>
           </HStack>

@@ -2,27 +2,23 @@ import logo from './logo.svg';
 import './App.css';
 import { ChakraProvider} from '@chakra-ui/react'
 import ProductsDisplayPage from './pages/ProductsDisplayPage'
+import { useEffect, useState } from 'react';
 function App() {
-  const products = [
-    {
-      id: 1,
-      name: 'Awesome Widget',
-      price: '19.99',
-      description: 'This widget is the best tool for your needs. It comes in various colors and sizes.',
-      imageUrl: 'https://via.placeholder.com/150',
-    },
-    {
-      id: 2,
-      name: 'Fantastic Gadget',
-      price: '29.99',
-      description: 'A fantastic gadget that can solve all your problems. Sleek design and easy to use.',
-      imageUrl: 'https://via.placeholder.com/150',
-    },
-    // Add more products as needed
-  ];
+  const [products, setProducts] = useState(null);
+  useEffect(() => {
+    fetch('https://dummyjson.com/products')
+    .then(res => res.json())
+    .then((data) => {
+      setProducts(data["products"]);
+      console.log(products);
+    });
+  }, []);
+
   return (
     <ChakraProvider>
+      {products &&
       <ProductsDisplayPage products={products}/>
+      }
     </ChakraProvider>
   );
 }
