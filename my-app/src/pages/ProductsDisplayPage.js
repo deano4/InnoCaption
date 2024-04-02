@@ -5,7 +5,7 @@ import Item from '../components/Item';
 const ProductsDisplayPage = ({ products }) => {
   console.log(products);
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing="40px" p={5}>
+    <SimpleGrid minChildWidth="300px" spacing="10px" p={5}>
       {products.map((product) => (
         <Item key={product.title} product={product} />
       ))}

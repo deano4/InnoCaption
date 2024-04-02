@@ -11,9 +11,8 @@ import {
 
 const Item = ({product}) => {
   return (
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" p={5} m="auto" mt={10}>
-      <Image src={product.thumbnail} alt={`Image of ${product.title}`} />
-
+    <Box width="300px" height="450px" borderWidth="1px" borderRadius="lg" overflow="hidden" p="auto" mt={10}>
+      <Image src={product.thumbnail} resize="contain" width="300px" height="200px" alt={`Image of ${product.title}`}/>
       <Box p="6">
         <Box d="flex" alignItems="baseline">
           <HStack spacing={2}>
@@ -23,11 +22,6 @@ const Item = ({product}) => {
             <Text color="green.500">${product.price}</Text>
           </HStack>
         </Box>
-
-        <Box>
-          <Text mt={2}>{product.description}</Text>
-        </Box>
-
         <VStack>
           <Button colorScheme="blue" onClick={() => alert('Added to cart!')}>
             Add to Cart
