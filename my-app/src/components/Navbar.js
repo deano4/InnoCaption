@@ -9,12 +9,11 @@ import {
     InputRightElement,
     Button,
   } from '@chakra-ui/react';
-import { useNavigate, createSearchParams, renderMatches, useLocation } from 'react-router-dom';
-import DropdownMenu from './DropdownMenu'; // Import your DropdownMenu component
+import { useNavigate, createSearchParams, renderMatches, useLocation, Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
-    const bg = useColorModeValue('gray.100', 'gray.900');
+    const bg = useColorModeValue('#141920', '#141920');
     const color = useColorModeValue('black', 'white');
     const navigate = useNavigate();
 
@@ -22,7 +21,6 @@ const Navbar = () => {
       event.preventDefault();
       // Implement your search logic here
       console.log(searchQuery);
-
       navigate({
         pathname: "/",
         search: `?${createSearchParams({
@@ -33,10 +31,10 @@ const Navbar = () => {
 
   return (
     <Flex bg={bg} color={color} px={5} py={4} justifyContent="space-between" alignItems="center">
-      <Text fontSize="xl" fontWeight="bold">
-        MyStore
+      <Text textColor="white" fontSize="xl" fontWeight="bold">
+        <Link to={"/"}>MyStore</Link>
       </Text>
-      <Flex as="form" onSubmit={handleSearch} alignItems="center">
+      <Flex bg="white" width="70%" maxWidth="700" as="form" onSubmit={handleSearch} alignItems="center">
         <InputGroup>
           <Input
             type="text"
@@ -48,7 +46,9 @@ const Navbar = () => {
         </InputGroup>
       </Flex>
       <Flex alignItems="center">
-        <DropdownMenu />
+      <Text textColor="white" fontSize="xl" fontWeight="bold">
+        <Link to={"/cart"}>Cart</Link>
+      </Text>
       </Flex>
     </Flex>
   );
