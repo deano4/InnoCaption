@@ -8,7 +8,7 @@ const ItemListForm = ({ item, onRemove, onUpdateQuantity }) => {
         <Box width="100%" height="200px" borderWidth="1px" borderColor="black">
             <Flex key={item.id} align="center" mb={4}>
             <Box height="200px" width="200px">
-                <Image resize="contain" src={item.thumbnail} alt={item.title} height="200px"/>
+                <Image resize="contain" src={item.thumbnail} alt={item.title} height="199px"/>
             </Box>
             <Box marginLeft="40px" h="200px" w="100%" >
                 <Stack flex={1} direction="column" spacing={1}>
@@ -27,7 +27,7 @@ const ItemListForm = ({ item, onRemove, onUpdateQuantity }) => {
             </Box>
             <Box h="200px" w="300px">
             <Flex w="100%" justifyContent="center" direction="column" alignItems="left" marginTop="10px">
-                <Text fontWeight="bold" fontSize="30px">${item.discountedPrice.toFixed(2)} </Text>
+                <Text fontWeight="bold" fontSize="30px">${Math.trunc(item.price*(1-item.discountPercentage*0.01))} </Text>
                 <Text fontSize="20px" color="gray.600" textDecoration="line-through">${item.price.toFixed(2)}</Text>
                 
             </Flex>
